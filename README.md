@@ -1,5 +1,5 @@
 # TicTacToe
-The desktop app tic tac toe game.  JavaFX
+The desktop app tic tac toe.  JavaFX
   
   
-  Tic tac toe game is writting in JavaFX. This app is under construction
+  Tic tac toe is writting in JavaFX. This app is under construction
