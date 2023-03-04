@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Group root = new Group();
-        Scene scene = new Scene(root, Color.BLACK);
+        Scene scene = new Scene(root, Color.DEEPPINK);
 
         Image icon = new Image("img/tic-tac-toe-icon.png");
 
