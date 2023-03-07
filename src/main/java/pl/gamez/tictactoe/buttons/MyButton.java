@@ -12,8 +12,10 @@ public class MyButton extends Button
 
     private int x;
     private int y;
+    private int k;
+    private int g;
 
-    public MyButton(String name, int x, int y)
+    public MyButton(String name, int x, int y, int k, int g)
     {
         super(name);
         this.setLayoutX(x);
@@ -24,6 +26,8 @@ public class MyButton extends Button
         this.setCursor(Cursor.CLOSED_HAND);
         this.x = x;
         this.y = y;
+        this.k = k;
+        this.g = g;
     }
     public void clickToPlay()
     {
@@ -32,8 +36,14 @@ public class MyButton extends Button
 
             if(parent instanceof Group){
                 ((Group) parent).getChildren().remove(this);
-                GameImage imageViewCross = new GameImage(HelloApplication.cross, this.x, this.y);
-                ((Group)parent).getChildren().add(imageViewCross);
+                if(HelloApplication.whichPlayer%2 == 0) {
+                    GameImage imageViewCross = new GameImage(HelloApplication.circle, this.k, this.g);
+                    ((Group) parent).getChildren().add(imageViewCross);
+                }else{
+                    GameImage imageViewCircle = new GameImage(HelloApplication.cross, this.k, this.g);
+                    ((Group) parent).getChildren().add(imageViewCircle);
+                }
+                HelloApplication.whichPlayer++;
             }
 
         });

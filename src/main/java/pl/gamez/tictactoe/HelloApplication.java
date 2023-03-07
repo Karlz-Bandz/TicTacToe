@@ -22,6 +22,7 @@ public class HelloApplication extends Application
 
     public static Image circle = new Image("img/circle.png");
     public static Image cross = new Image("img/cross.png");
+    public static int whichPlayer = 1;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -40,17 +41,17 @@ public class HelloApplication extends Application
 //        GameImage circleImage = new GameImage(circle, 6,6);
 //        GameImage crossImage = new GameImage(cross, 140, 6);
 
-        Button button = new MyButton("", 12, 12);
-        Button button2 = new MyButton("", 146, 12);
-        Button button3 = new MyButton("", 280,12);
+        Button button = new MyButton("", 12, 12, 6, 6);
+        Button button2 = new MyButton("", 146, 12, 140, 6);
+        Button button3 = new MyButton("", 280,12, 274, 6);
 
-        Button button4 = new MyButton("", 12, 146);
-        Button button5 = new MyButton("", 146, 146);
-        Button button6 = new MyButton("", 280,146);
+        Button button4 = new MyButton("", 12, 146, 6, 140);
+        Button button5 = new MyButton("", 146, 146, 140,140);
+        Button button6 = new MyButton("", 280,146, 274,140);
 
-        Button button7 = new MyButton("", 12, 280);
-        Button button8 = new MyButton("", 146, 280);
-        Button button9 = new MyButton("", 280,280);
+        Button button7 = new MyButton("", 12, 280, 6, 274);
+        Button button8 = new MyButton("", 146, 280, 140, 274);
+        Button button9 = new MyButton("", 280,280, 274,274);
 
         ((MyButton) button).clickToPlay();
         ((MyButton) button2).clickToPlay();
@@ -65,7 +66,8 @@ public class HelloApplication extends Application
         Group root = new Group(imageView1,
                 button, button2, button3,
                 button4, button5, button6,
-                button7, button8, button9);
+                button7, button8, button9
+        );
         Scene scene = new Scene(root, Color.GRAY);
 
         primaryStage.getIcons().add(icon);
