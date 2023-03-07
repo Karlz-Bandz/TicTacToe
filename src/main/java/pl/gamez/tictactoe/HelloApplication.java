@@ -10,6 +10,12 @@ import javafx.stage.Stage;
 import pl.gamez.tictactoe.buttons.MyButton;
 import pl.gamez.tictactoe.images.ImageController;
 
+/*
+* This simple tic-tac-toe game is creating just for practice.
+* Below we can see main class and here the program is started.
+* Here are assigned all coordinates and sizes of the images.
+ */
+
 
 public class HelloApplication extends Application
 {
