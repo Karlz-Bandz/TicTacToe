@@ -1,16 +1,17 @@
 package pl.gamez.tictactoe;
 
 import javafx.application.Application;
-import javafx.scene.Cursor;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import pl.gamez.tictactoe.buttons.MyButton;
+import pl.gamez.tictactoe.images.GameImage;
+import pl.gamez.tictactoe.images.ImageController;
 
 
 public class HelloApplication extends Application {
@@ -28,13 +29,15 @@ public class HelloApplication extends Application {
 
         Image icon = new Image("img/tic-tac-toe-icon.png");
         Image iconToPlay = new Image("img/square.png");
+        Image circle = new Image("img/circle.png");
+        Image cross = new Image("img/cross.png");
+
+        ImageController imageView1 = new ImageController(iconToPlay, 411, 411);
+
+        GameImage circleImage = new GameImage(circle, 5,5);
+        GameImage crossImage = new GameImage(cross, 139, 5);
 
 
-
-
-        ImageView imageView = new ImageView(iconToPlay);
-        imageView.setFitHeight(411);
-        imageView.setFitWidth(411);
 
         Button button = new MyButton("", 12, 12);
         Button button2 = new MyButton("", 146, 12);
@@ -48,22 +51,15 @@ public class HelloApplication extends Application {
         Button button8 = new MyButton("", 146, 280);
         Button button9 = new MyButton("", 280,280);
 
-//        button.setLayoutX(12);
-//        button.setLayoutY(12);
-//
-//        button2.setLayoutX(56);
-//        button2.setLayoutY(12);
+        ((MyButton) button).clickToPlay();
 
 
-//        VBox buttBox = new VBox();
-//        buttBox.getChildren().addAll(button, button2);
-        Group root = new Group(imageView,
+
+        Group root = new Group(imageView1,
                 button, button2, button3,
                 button4, button5, button6,
-                button7, button8, button9);
+                button7, button8, button9,circleImage, crossImage);
         Scene scene = new Scene(root, Color.GRAY);
-
-
 
         primaryStage.getIcons().add(icon);
         primaryStage.setTitle("Tic Tac Toe GAME");
