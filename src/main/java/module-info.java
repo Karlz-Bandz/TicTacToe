@@ -5,4 +5,6 @@ module pl.gamez.tictactoe {
 
     opens pl.gamez.tictactoe to javafx.fxml;
     exports pl.gamez.tictactoe;
+    exports pl.gamez.tictactoe.images;
+    opens pl.gamez.tictactoe.images to javafx.fxml;
 }
