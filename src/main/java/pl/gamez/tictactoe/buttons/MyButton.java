@@ -4,7 +4,6 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import pl.gamez.tictactoe.GameSettings;
 import pl.gamez.tictactoe.HelloApplication;
 import pl.gamez.tictactoe.images.GameImage;
 
@@ -52,12 +51,14 @@ public class MyButton extends Button
                     GameImage imageViewCross = new GameImage(HelloApplication.circle, this.k, this.g);
                     gameSettings.setValue(coordinateA, coordinateB, 1);
                     ((Group) parent).getChildren().add(imageViewCross);
+                    gameSettings.checkWhoWin(gameSettings.getGameArray());
 
                 }else{
 
                     GameImage imageViewCircle = new GameImage(HelloApplication.cross, this.k, this.g);
                     gameSettings.setValue(coordinateA, coordinateB, 2);
                     ((Group) parent).getChildren().add(imageViewCircle);
+                    gameSettings.checkWhoWin(gameSettings.getGameArray());
 
                 }
 

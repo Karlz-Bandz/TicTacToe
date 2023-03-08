@@ -20,10 +20,14 @@ import pl.gamez.tictactoe.images.ImageController;
 public class HelloApplication extends Application
 {
 
+    /*
+    * The global variables section
+     */
     public static Image circle = new Image("img/circle.png");
     public static Image cross = new Image("img/cross.png");
     public static int whichPlayer = 1;
-    public static GameSettings gameSettings = new GameSettings();
+    public static GameSetting gameSettings = new GameSetting();
+    //-----------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
         Application.launch(args);
