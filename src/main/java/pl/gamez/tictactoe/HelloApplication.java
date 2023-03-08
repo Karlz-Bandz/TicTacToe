@@ -23,6 +23,7 @@ public class HelloApplication extends Application
     public static Image circle = new Image("img/circle.png");
     public static Image cross = new Image("img/cross.png");
     public static int whichPlayer = 1;
+    public static GameSettings gameSettings = new GameSettings();
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -38,12 +39,11 @@ public class HelloApplication extends Application
 
         ImageController imageView1 = new ImageController(iconToPlay, 411, 411);
 
-//        GameImage circleImage = new GameImage(circle, 6,6);
-//        GameImage crossImage = new GameImage(cross, 140, 6);
 
-        Button button = new MyButton("", 12, 12, 6, 6, 0, 0);
-        Button button2 = new MyButton("", 146, 12, 140, 6, 0, 1);
-        Button button3 = new MyButton("", 280,12, 274, 6, 0,2);
+
+        Button button = new MyButton("",12,12,6,6,0,0);
+        Button button2 = new MyButton("",146,12,140,6,0,1);
+        Button button3 = new MyButton("",280,12,274,6,0,2);
 
         Button button4 = new MyButton("", 12, 146, 6, 140,1,0);
         Button button5 = new MyButton("", 146, 146, 140,140,1,1);
