@@ -10,19 +10,16 @@ import pl.gamez.tictactoe.images.GameImage;
 
 import java.util.Arrays;
 
+import static pl.gamez.tictactoe.HelloApplication.gameSettings;
+
 public class MyButton extends Button
 {
-
-
-
-    private int x;
-    private int y;
-    private int k;
-    private int g;
-    private int coordinateA;
-    private int coordinateB;
-
-    private GameSettings gameSettings = new GameSettings();
+    private final int x;
+    private final int y;
+    private final int k;
+    private final int g;
+    private final int coordinateA;
+    private final int coordinateB;
 
     public MyButton(String name, int x, int y, int k, int g, int coordinateA, int coordinateB)
     {
@@ -43,29 +40,36 @@ public class MyButton extends Button
     public void clickToPlay()
     {
         this.setOnAction(event -> {
+
             Parent parent = this.getParent();
 
             if(parent instanceof Group){
+
                 ((Group) parent).getChildren().remove(this);
+
                 if(HelloApplication.whichPlayer%2 == 0) {
+
                     GameImage imageViewCross = new GameImage(HelloApplication.circle, this.k, this.g);
-
                     gameSettings.setValue(coordinateA, coordinateB, 1);
-                    int[][] test = gameSettings.getGameArray();
-
-                    System.out.println(Arrays.deepToString(test));
-
                     ((Group) parent).getChildren().add(imageViewCross);
-                }else{
-                    GameImage imageViewCircle = new GameImage(HelloApplication.cross, this.k, this.g);
 
+                }else{
+
+                    GameImage imageViewCircle = new GameImage(HelloApplication.cross, this.k, this.g);
                     gameSettings.setValue(coordinateA, coordinateB, 2);
+                    ((Group) parent).getChildren().add(imageViewCircle);
+
+                }
+
+                HelloApplication.whichPlayer++;
+
+                if(HelloApplication.whichPlayer >= 10){
                     int[][] test = gameSettings.getGameArray();
 
-                    System.out.println(Arrays.deepToString(test));
-                    ((Group) parent).getChildren().add(imageViewCircle);
+                    for (final int[] is : test) {
+                        System.out.println(Arrays.toString(is));
+                    }
                 }
-                HelloApplication.whichPlayer++;
             }
 
         });

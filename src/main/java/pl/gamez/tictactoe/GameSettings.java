@@ -9,7 +9,7 @@ public class GameSettings {
     }
 
     public void setValue(int i, int j, int value){
-        this.gameArray[i][j] += value;
+        this.gameArray[i][j] = value;
     }
 
     public int[][] getGameArray(){
