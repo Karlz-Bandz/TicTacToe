@@ -6,12 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pl.gamez.tictactoe.buttons.MyButton;
 import pl.gamez.tictactoe.images.ImageController;
 
 /*
-* TicTacToe 1.0 Standard
+* TicTacToe 1.1 Standard
 * This simple tic-tac-toe game is creating just for practice.
 * Below we can see main class and here the program is started.
 * Here are assigned all coordinates and sizes of the images.
@@ -27,7 +28,12 @@ public class HelloApplication extends Application
     public static Image circle = new Image("img/circle.png");
     public static Image cross = new Image("img/cross.png");
     public static int whichPlayer = 1;
+    public static int player1Points = 0;
+    public static int player2Points = 0;
     public static GameSetting gameSettings = new GameSetting();
+    public static Text player1 = new Text("Player 1: " + player1Points);
+    public static Text player2 = new Text("Player 2: " + player2Points);
+
     //-----------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
@@ -37,6 +43,14 @@ public class HelloApplication extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+
+        player1.setX(434);
+        player1.setY(150);
+        player1.setStyle("-fx-font-size: 20pt");
+
+        player2.setX(434);
+        player2.setY(276);
+        player2.setStyle("-fx-font-size: 20pt");
 
         Image icon = new Image("img/tic-tac-toe-icon.png");
         Image iconToPlay = new Image("img/square.png");
@@ -68,10 +82,19 @@ public class HelloApplication extends Application
         ((MyButton) button8).clickToPlay();
         ((MyButton) button9).clickToPlay();
 
+        Text pointText = new Text("Points");
+        pointText.setX(454);
+        pointText.setY(60);
+        pointText.setStyle("-fx-font-size: 20pt");
+
+
+
         Group root = new Group(imageView1,
                 button, button2, button3,
                 button4, button5, button6,
-                button7, button8, button9
+                button7, button8, button9,
+                pointText,
+                player1, player2
         );
         Scene scene = new Scene(root, Color.GRAY);
 
