@@ -11,6 +11,7 @@ import pl.gamez.tictactoe.buttons.MyButton;
 import pl.gamez.tictactoe.images.ImageController;
 
 /*
+* TicTacToe 1.0 Standard
 * This simple tic-tac-toe game is creating just for practice.
 * Below we can see main class and here the program is started.
 * Here are assigned all coordinates and sizes of the images.
