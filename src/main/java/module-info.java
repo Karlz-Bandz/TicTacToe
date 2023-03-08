@@ -1,6 +1,7 @@
 module pl.gamez.tictactoe {
     requires javafx.controls;
     requires javafx.fxml;
+    requires org.junit.jupiter.api;
 
 
     opens pl.gamez.tictactoe to javafx.fxml;
