@@ -3,16 +3,16 @@ package pl.gamez.tictactoe;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pl.gamez.tictactoe.buttons.MyButton;
+import pl.gamez.tictactoe.images.GameImage;
 import pl.gamez.tictactoe.images.ImageController;
 
 /*
-* TicTacToe 1.2 Standard
+* TicTacToe 1.3 Standard
 * This simple tic-tac-toe game is creating just for practice.
 * Below we can see main class and here the program is started.
 * Here are assigned all coordinates and sizes of the images.
@@ -33,6 +33,9 @@ public class HelloApplication extends Application
     public static GameSetting gameSettings = new GameSetting();
     public static Text player1 = new Text("Player 1: " + player1Points);
     public static Text player2 = new Text("Player 2: " + player2Points);
+    public static MyButton[] buttons = new MyButton[9];
+    public static GameImage[] circleImages = new GameImage[9];
+    public static GameImage[] crossImages = new GameImage[9];
 
     //-----------------------------------------------------------------------------------------
 
@@ -43,6 +46,10 @@ public class HelloApplication extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        Text pointText = new Text("Points");
+        pointText.setX(454);
+        pointText.setY(60);
+        pointText.setStyle("-fx-font-size: 20pt");
 
         player1.setX(434);
         player1.setY(150);
@@ -58,35 +65,96 @@ public class HelloApplication extends Application
 
         ImageController imageView1 = new ImageController(iconToPlay, 411, 411);
 
+        GameImage circleImage1 = new GameImage(circle, 6,6);
+        GameImage circleImage2 = new GameImage(circle, 140,6);
+        GameImage circleImage3 = new GameImage(circle, 274,6);
+        GameImage circleImage4 = new GameImage(circle, 6,140);
+        GameImage circleImage5 = new GameImage(circle, 140,140);
+        GameImage circleImage6 = new GameImage(circle, 274,140);
+        GameImage circleImage7 = new GameImage(circle, 6,274);
+        GameImage circleImage8 = new GameImage(circle, 140,274);
+        GameImage circleImage9 = new GameImage(circle, 274,274);
+
+        circleImage1.setVisible(false);
+        circleImage2.setVisible(false);
+        circleImage3.setVisible(false);
+        circleImage4.setVisible(false);
+        circleImage5.setVisible(false);
+        circleImage6.setVisible(false);
+        circleImage7.setVisible(false);
+        circleImage8.setVisible(false);
+        circleImage9.setVisible(false);
+
+        GameImage crossImage1 = new GameImage(cross, 6,6);
+        GameImage crossImage2 = new GameImage(cross, 140,6);
+        GameImage crossImage3 = new GameImage(cross, 274,6);
+        GameImage crossImage4 = new GameImage(cross, 6,140);
+        GameImage crossImage5 = new GameImage(cross, 140,140);
+        GameImage crossImage6 = new GameImage(cross, 274,140);
+        GameImage crossImage7 = new GameImage(cross, 6,274);
+        GameImage crossImage8 = new GameImage(cross, 140,274);
+        GameImage crossImage9 = new GameImage(cross, 274,274);
+
+        crossImage1.setVisible(false);
+        crossImage2.setVisible(false);
+        crossImage3.setVisible(false);
+        crossImage4.setVisible(false);
+        crossImage5.setVisible(false);
+        crossImage6.setVisible(false);
+        crossImage7.setVisible(false);
+        crossImage8.setVisible(false);
+        crossImage9.setVisible(false);
+
+        crossImages[0] = crossImage1;
+        crossImages[1] = crossImage2;
+        crossImages[2] = crossImage3;
+        crossImages[3] = crossImage4;
+        crossImages[4] = crossImage5;
+        crossImages[5] = crossImage6;
+        crossImages[6] = crossImage7;
+        crossImages[7] = crossImage8;
+        crossImages[8] = crossImage9;
+
+        circleImages[0] = circleImage1;
+        circleImages[1] = circleImage2;
+        circleImages[2] = circleImage3;
+        circleImages[3] = circleImage4;
+        circleImages[4] = circleImage5;
+        circleImages[5] = circleImage6;
+        circleImages[6] = circleImage7;
+        circleImages[7] = circleImage8;
+        circleImages[8] = circleImage9;
 
 
-        Button button = new MyButton("",12,12,6,6,0,0);
-        Button button2 = new MyButton("",146,12,140,6,0,1);
-        Button button3 = new MyButton("",280,12,274,6,0,2);
 
-        Button button4 = new MyButton("", 12, 146, 6, 140,1,0);
-        Button button5 = new MyButton("", 146, 146, 140,140,1,1);
-        Button button6 = new MyButton("", 280,146, 274,140,1,2);
+        MyButton button = new MyButton("",12,12,0,0,0);
+        MyButton button2 = new MyButton("",146,12,1,0,1);
+        MyButton button3 = new MyButton("",280,12,2,0,2);
 
-        Button button7 = new MyButton("", 12, 280, 6, 274,2,0);
-        Button button8 = new MyButton("", 146, 280, 140, 274,2,1);
-        Button button9 = new MyButton("", 280,280, 274,274,2,2);
+        MyButton button4 = new MyButton("", 12, 146, 3,1,0);
+        MyButton button5 = new MyButton("", 146, 146, 4,1,1);
+        MyButton button6 = new MyButton("", 280,146, 5,1,2);
 
-        ((MyButton) button).clickToPlay();
-        ((MyButton) button2).clickToPlay();
-        ((MyButton) button3).clickToPlay();
-        ((MyButton) button4).clickToPlay();
-        ((MyButton) button5).clickToPlay();
-        ((MyButton) button6).clickToPlay();
-        ((MyButton) button7).clickToPlay();
-        ((MyButton) button8).clickToPlay();
-        ((MyButton) button9).clickToPlay();
+        MyButton button7 = new MyButton("", 12, 280, 6,2,0);
+        MyButton button8 = new MyButton("", 146, 280, 7,2,1);
+        MyButton button9 = new MyButton("", 280,280, 8,2,2);
 
-        Text pointText = new Text("Points");
-        pointText.setX(454);
-        pointText.setY(60);
-        pointText.setStyle("-fx-font-size: 20pt");
+        buttons[0] = button;
+        buttons[1] = button2;
+        buttons[2] = button3;
+        buttons[3] = button4;
+        buttons[4] = button5;
+        buttons[5] = button6;
+        buttons[6] = button7;
+        buttons[7] = button8;
+        buttons[8] = button9;
 
+        Group groupImg = new Group(circleImage1,circleImage2,circleImage3,
+                circleImage4,circleImage5,circleImage6,circleImage7,circleImage8,
+                circleImage9, crossImage1,crossImage2,crossImage3,crossImage4,
+                crossImage5,crossImage6,crossImage7,crossImage8,crossImage9);
+
+        //groupImg.setVisible(false);
 
 
         Group root = new Group(imageView1,
@@ -94,8 +162,20 @@ public class HelloApplication extends Application
                 button4, button5, button6,
                 button7, button8, button9,
                 pointText,
-                player1, player2
+                player1, player2,
+                groupImg
         );
+
+                button.clickToPlay();
+                button2.clickToPlay();
+                button3.clickToPlay();
+                button4.clickToPlay();
+                button5.clickToPlay();
+                button6.clickToPlay();
+                button7.clickToPlay();
+                button8.clickToPlay();
+                button9.clickToPlay();
+
         Scene scene = new Scene(root, Color.GRAY);
 
         primaryStage.getIcons().add(icon);

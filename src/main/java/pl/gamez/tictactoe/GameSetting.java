@@ -2,6 +2,8 @@ package pl.gamez.tictactoe;
 
 import pl.gamez.tictactoe.interfaces.Settingz;
 
+
+
 public class GameSetting implements Settingz {
 
     private int[][] gameArray;
@@ -15,35 +17,70 @@ public class GameSetting implements Settingz {
     }
 
     @Override
-    public boolean checkWhoWin(int[][] gameArray) {
-
+    public boolean checkWhoWin()
+    {
         //Check rows
         for(int i = 0; i < 3; i++){
-            if(gameArray[i][0] == gameArray[i][1] && gameArray[i][0] == gameArray[i][2] && gameArray[i][0] != 0){
+            if(this.gameArray[i][0] == this.gameArray[i][1] && this.gameArray[i][0] == this.gameArray[i][2] && this.gameArray[i][0] != 0){
                setWin();
+               restarState();
                return true;
             }
         }
         //Check columns
         for(int i = 0; i < 3; i++){
-            if(gameArray[0][i] == gameArray[1][i] && gameArray[0][i] == gameArray[2][i] && gameArray[0][i] != 0){
+            if(this.gameArray[0][i] == this.gameArray[1][i] && this.gameArray[0][i] == this.gameArray[2][i] && this.gameArray[0][i] != 0){
                setWin();
+               restarState();
                return true;
             }
         }
         //Check cross
-        if(gameArray[0][0] == gameArray[1][1] && gameArray[0][0] == gameArray[2][2] && gameArray[0][0] != 0){
+        if(this.gameArray[0][0] == this.gameArray[1][1] && this.gameArray[0][0] == this.gameArray[2][2] && this.gameArray[0][0] != 0){
            setWin();
+           restarState();
            return true;
-        }else if(gameArray[0][2] == gameArray[1][1] && gameArray[0][2] == gameArray[2][0] && gameArray[0][2] != 0){
+        }else if(this.gameArray[0][2] == this.gameArray[1][1] && this.gameArray[0][2] == this.gameArray[2][0] && this.gameArray[0][2] != 0){
           setWin();
+          restarState();
           return true;
+        }
+        //Game not finish
+        if(HelloApplication.whichPlayer == 10){
+            restarState();
+            return true;
         }
         return false;
     }
 
+    private void restarState()
+    {
+        int buttonCounter = 0;
 
-    private void setWin() {
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+
+                if(this.gameArray[i][j] != 0)
+                {
+                    HelloApplication.buttons[buttonCounter].setVisible(true);
+                    gameArray[i][j] = 0;
+                    if(HelloApplication.crossImages[buttonCounter].isVisible() == true){
+                           HelloApplication.crossImages[buttonCounter].setVisible(false);
+                    }else if(HelloApplication.circleImages[buttonCounter].isVisible() == true){
+                        HelloApplication.circleImages[buttonCounter].setVisible(false);
+                    }
+                }
+                buttonCounter++;
+            }
+        }
+        HelloApplication.whichPlayer = 0;
+    }
+
+
+    private void setWin()
+    {
         if(HelloApplication.whichPlayer%2 == 0){
             System.out.println("Player o won");
             HelloApplication.player2Points++;
@@ -55,9 +92,8 @@ public class GameSetting implements Settingz {
         }
     }
 
-    public int[][] getGameArray(){
+    public int[][] getGameArray()
+    {
         return this.gameArray;
     }
-
-
 }
