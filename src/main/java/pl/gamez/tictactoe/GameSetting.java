@@ -46,7 +46,7 @@ public class GameSetting implements Settingz {
           return true;
         }
         //Game not finish
-        if(HelloApplication.whichPlayer == 10){
+        if(HelloApplication.whichPlayer >= 9){
             restarState();
             return true;
         }
