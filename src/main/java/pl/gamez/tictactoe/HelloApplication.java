@@ -3,7 +3,6 @@ package pl.gamez.tictactoe;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -33,6 +32,7 @@ public class HelloApplication extends Application
     public static GameSetting gameSettings = new GameSetting();
     public static Text player1 = new Text("Player 1: " + player1Points);
     public static Text player2 = new Text("Player 2: " + player2Points);
+    public static MyButton[] buttons = new MyButton[9];
 
     //-----------------------------------------------------------------------------------------
 
@@ -60,27 +60,29 @@ public class HelloApplication extends Application
 
 
 
-        Button button = new MyButton("",12,12,6,6,0,0);
-        Button button2 = new MyButton("",146,12,140,6,0,1);
-        Button button3 = new MyButton("",280,12,274,6,0,2);
+        MyButton button = new MyButton("",12,12,6,6,0,0);
+        MyButton button2 = new MyButton("",146,12,140,6,0,1);
+        MyButton button3 = new MyButton("",280,12,274,6,0,2);
 
-        Button button4 = new MyButton("", 12, 146, 6, 140,1,0);
-        Button button5 = new MyButton("", 146, 146, 140,140,1,1);
-        Button button6 = new MyButton("", 280,146, 274,140,1,2);
+        MyButton button4 = new MyButton("", 12, 146, 6, 140,1,0);
+        MyButton button5 = new MyButton("", 146, 146, 140,140,1,1);
+        MyButton button6 = new MyButton("", 280,146, 274,140,1,2);
 
-        Button button7 = new MyButton("", 12, 280, 6, 274,2,0);
-        Button button8 = new MyButton("", 146, 280, 140, 274,2,1);
-        Button button9 = new MyButton("", 280,280, 274,274,2,2);
+        MyButton button7 = new MyButton("", 12, 280, 6, 274,2,0);
+        MyButton button8 = new MyButton("", 146, 280, 140, 274,2,1);
+        MyButton button9 = new MyButton("", 280,280, 274,274,2,2);
 
-        ((MyButton) button).clickToPlay();
-        ((MyButton) button2).clickToPlay();
-        ((MyButton) button3).clickToPlay();
-        ((MyButton) button4).clickToPlay();
-        ((MyButton) button5).clickToPlay();
-        ((MyButton) button6).clickToPlay();
-        ((MyButton) button7).clickToPlay();
-        ((MyButton) button8).clickToPlay();
-        ((MyButton) button9).clickToPlay();
+        buttons[0] = button;
+        buttons[1] = button2;
+        buttons[2] = button3;
+        buttons[3] = button4;
+        buttons[4] = button5;
+        buttons[5] = button6;
+        buttons[6] = button7;
+        buttons[7] = button8;
+        buttons[8] = button9;
+
+
 
         Text pointText = new Text("Points");
         pointText.setX(454);
@@ -96,6 +98,17 @@ public class HelloApplication extends Application
                 pointText,
                 player1, player2
         );
+
+                button.clickToPlay();
+                button2.clickToPlay();
+                button3.clickToPlay();
+                button4.clickToPlay();
+                button5.clickToPlay();
+                button6.clickToPlay();
+                button7.clickToPlay();
+                button8.clickToPlay();
+                button9.clickToPlay();
+
         Scene scene = new Scene(root, Color.GRAY);
 
         primaryStage.getIcons().add(icon);
