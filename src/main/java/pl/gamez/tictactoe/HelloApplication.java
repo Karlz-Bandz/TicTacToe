@@ -5,8 +5,10 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import pl.gamez.tictactoe.buttons.ExitButton;
 import pl.gamez.tictactoe.buttons.MyButton;
 import pl.gamez.tictactoe.images.GameImage;
 import pl.gamez.tictactoe.images.ImageController;
@@ -50,14 +52,17 @@ public class HelloApplication extends Application
         pointText.setX(454);
         pointText.setY(60);
         pointText.setStyle("-fx-font-size: 20pt");
+        pointText.setFont(Font.font("Impact"));
 
-        player1.setX(434);
-        player1.setY(150);
+        player1.setX(436);
+        player1.setY(120);
         player1.setStyle("-fx-font-size: 20pt");
+        player1.setFont(Font.font("Impact"));
 
-        player2.setX(434);
-        player2.setY(276);
+        player2.setX(436);
+        player2.setY(170);
         player2.setStyle("-fx-font-size: 20pt");
+        player2.setFont(Font.font("Impact"));
 
         Image icon = new Image("img/tic-tac-toe-icon.png");
         Image iconToPlay = new Image("img/square.png");
@@ -139,6 +144,12 @@ public class HelloApplication extends Application
         MyButton button8 = new MyButton("", 146, 280, 7,2,1);
         MyButton button9 = new MyButton("", 280,280, 8,2,2);
 
+        ExitButton exitButton = new ExitButton("EXIT");
+
+        exitButton.exitGame();
+
+
+
         buttons[0] = button;
         buttons[1] = button2;
         buttons[2] = button3;
@@ -161,6 +172,7 @@ public class HelloApplication extends Application
                 button, button2, button3,
                 button4, button5, button6,
                 button7, button8, button9,
+                exitButton,
                 pointText,
                 player1, player2,
                 groupImg
