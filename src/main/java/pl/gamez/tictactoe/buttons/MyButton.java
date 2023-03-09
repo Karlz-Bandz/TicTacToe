@@ -5,7 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import pl.gamez.tictactoe.HelloApplication;
-import pl.gamez.tictactoe.images.GameImage;
+
 
 import static pl.gamez.tictactoe.HelloApplication.gameSettings;
 
@@ -13,12 +13,11 @@ public class MyButton extends Button
 {
     private final int x;
     private final int y;
-    private final int k;
-    private final int g;
+    private final int id;
     private final int coordinateA;
     private final int coordinateB;
 
-    public MyButton(String name, int x, int y, int k, int g, int coordinateA, int coordinateB)
+    public MyButton(String name, int x, int y, int id, int coordinateA, int coordinateB)
     {
         super(name);
         this.setLayoutX(x);
@@ -29,8 +28,7 @@ public class MyButton extends Button
         this.setCursor(Cursor.CLOSED_HAND);
         this.x = x;
         this.y = y;
-        this.k = k;
-        this.g = g;
+        this.id = id;
         this.coordinateA = coordinateA;
         this.coordinateB = coordinateB;
     }
@@ -46,16 +44,14 @@ public class MyButton extends Button
 
                 if(HelloApplication.whichPlayer%2 == 0) {
 
-                    GameImage imageViewCross = new GameImage(HelloApplication.circle, this.k, this.g);
                     gameSettings.setValue(coordinateA, coordinateB, 1);
-                    ((Group) parent).getChildren().add(imageViewCross);
+                    HelloApplication.circleImages[this.id].setVisible(true);
                     gameSettings.checkWhoWin();
 
                 }else{
 
-                    GameImage imageViewCircle = new GameImage(HelloApplication.cross, this.k, this.g);
                     gameSettings.setValue(coordinateA, coordinateB, 2);
-                    ((Group) parent).getChildren().add(imageViewCircle);
+                    HelloApplication.crossImages[this.id].setVisible(true);
                     gameSettings.checkWhoWin();
 
                 }

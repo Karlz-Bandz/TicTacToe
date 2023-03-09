@@ -2,6 +2,8 @@ package pl.gamez.tictactoe;
 
 import pl.gamez.tictactoe.interfaces.Settingz;
 
+
+
 public class GameSetting implements Settingz {
 
     private int[][] gameArray;
@@ -43,6 +45,11 @@ public class GameSetting implements Settingz {
           restarState();
           return true;
         }
+        //Game not finish
+        if(HelloApplication.whichPlayer == 10){
+            restarState();
+            return true;
+        }
         return false;
     }
 
@@ -50,16 +57,25 @@ public class GameSetting implements Settingz {
     {
         int buttonCounter = 0;
 
-        for(int i = 0; i < 3; i++){
-            for(int j = 0; j < 3; j++){
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
 
-                if(this.gameArray[i][j] != 0){
+                if(this.gameArray[i][j] != 0)
+                {
                     HelloApplication.buttons[buttonCounter].setVisible(true);
                     gameArray[i][j] = 0;
+                    if(HelloApplication.crossImages[buttonCounter].isVisible() == true){
+                           HelloApplication.crossImages[buttonCounter].setVisible(false);
+                    }else if(HelloApplication.circleImages[buttonCounter].isVisible() == true){
+                        HelloApplication.circleImages[buttonCounter].setVisible(false);
+                    }
                 }
                 buttonCounter++;
             }
         }
+        HelloApplication.whichPlayer = 0;
     }
 
 
