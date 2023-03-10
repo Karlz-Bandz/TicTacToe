@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import pl.gamez.tictactoe.HelloApplication;
 
 
+import java.util.Random;
+
 import static pl.gamez.tictactoe.HelloApplication.gameSettings;
 
 public class MyButton extends Button
@@ -16,6 +18,8 @@ public class MyButton extends Button
     private final int id;
     private final int coordinateA;
     private final int coordinateB;
+
+    Random rand = new Random();
 
     public MyButton(String name, int x, int y, int id, int coordinateA, int coordinateB)
     {
@@ -61,5 +65,35 @@ public class MyButton extends Button
             }
 
         });
+    }
+
+    public void clickToPlayWithPC()
+    {
+        this.setOnAction(event ->
+        {
+
+                 Parent parent = this.getParent();
+
+
+
+                if(HelloApplication.whichPlayer%2 != 0)
+                {
+
+                    if(parent instanceof Group)
+                    {
+                           this.setVisible(false);
+
+                           gameSettings.setValue(coordinateA, coordinateB, 2);
+                           HelloApplication.crossImages[this.id].setVisible(true);
+                           gameSettings.checkWhoWin();
+                    }
+
+                }
+
+
+                HelloApplication.whichPlayer++;
+        });
+
+
     }
 }

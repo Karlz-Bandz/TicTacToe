@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pl.gamez.tictactoe.buttons.ExitButton;
 import pl.gamez.tictactoe.buttons.MyButton;
+import pl.gamez.tictactoe.buttons.SetButton;
 import pl.gamez.tictactoe.images.GameImage;
 import pl.gamez.tictactoe.images.ImageController;
 
@@ -27,6 +28,7 @@ public class HelloApplication extends Application
     /*
     * The global variables section
      */
+
     public static Image circle = new Image("img/circle.png");
     public static Image cross = new Image("img/cross.png");
     public static int whichPlayer = 1;
@@ -145,8 +147,12 @@ public class HelloApplication extends Application
         MyButton button9 = new MyButton("", 280,280, 8,2,2);
 
         ExitButton exitButton = new ExitButton("EXIT");
-
         exitButton.exitGame();
+
+        SetButton standard = new SetButton("1 on 1", 422, 200);
+        standard.setWithPerson();
+        SetButton pc = new SetButton("1 on PC", 422, 250);
+        pc.setWithPC();
 
 
 
@@ -165,28 +171,22 @@ public class HelloApplication extends Application
                 circleImage9, crossImage1,crossImage2,crossImage3,crossImage4,
                 crossImage5,crossImage6,crossImage7,crossImage8,crossImage9);
 
-        //groupImg.setVisible(false);
+
 
 
         Group root = new Group(imageView1,
                 button, button2, button3,
                 button4, button5, button6,
                 button7, button8, button9,
+                standard,
+                pc,
                 exitButton,
                 pointText,
                 player1, player2,
                 groupImg
         );
 
-                button.clickToPlay();
-                button2.clickToPlay();
-                button3.clickToPlay();
-                button4.clickToPlay();
-                button5.clickToPlay();
-                button6.clickToPlay();
-                button7.clickToPlay();
-                button8.clickToPlay();
-                button9.clickToPlay();
+
 
         Scene scene = new Scene(root, Color.GRAY);
 
