@@ -20,33 +20,40 @@ public class GameSetting implements Settingz {
     public boolean checkWhoWin()
     {
         //Check rows
-        for(int i = 0; i < 3; i++){
-            if(this.gameArray[i][0] == this.gameArray[i][1] && this.gameArray[i][0] == this.gameArray[i][2] && this.gameArray[i][0] != 0){
+        for(int i = 0; i < 3; i++)
+        {
+            if(this.gameArray[i][0] == this.gameArray[i][1] && this.gameArray[i][0] == this.gameArray[i][2] && this.gameArray[i][0] != 0)
+            {
                setWin();
                restarState();
                return true;
             }
         }
         //Check columns
-        for(int i = 0; i < 3; i++){
-            if(this.gameArray[0][i] == this.gameArray[1][i] && this.gameArray[0][i] == this.gameArray[2][i] && this.gameArray[0][i] != 0){
+        for(int i = 0; i < 3; i++)
+        {
+            if(this.gameArray[0][i] == this.gameArray[1][i] && this.gameArray[0][i] == this.gameArray[2][i] && this.gameArray[0][i] != 0)
+            {
                setWin();
                restarState();
                return true;
             }
         }
         //Check cross
-        if(this.gameArray[0][0] == this.gameArray[1][1] && this.gameArray[0][0] == this.gameArray[2][2] && this.gameArray[0][0] != 0){
+        if(this.gameArray[0][0] == this.gameArray[1][1] && this.gameArray[0][0] == this.gameArray[2][2] && this.gameArray[0][0] != 0)
+        {
            setWin();
            restarState();
            return true;
-        }else if(this.gameArray[0][2] == this.gameArray[1][1] && this.gameArray[0][2] == this.gameArray[2][0] && this.gameArray[0][2] != 0){
+        }else if(this.gameArray[0][2] == this.gameArray[1][1] && this.gameArray[0][2] == this.gameArray[2][0] && this.gameArray[0][2] != 0)
+        {
           setWin();
           restarState();
           return true;
         }
         //Game not finish
-        if(HelloApplication.whichPlayer >= 9){
+        if(HelloApplication.whichPlayer >= 9)
+        {
             restarState();
             return true;
         }
