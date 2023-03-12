@@ -1,10 +1,15 @@
 # TicTacToe
 The desktop app tic tac toe.  JavaFX
   
-  TicTacToe 1.0 Standard
+  TicTacToe 1.5 Standard
   
-  Already is possible to play with another person but doesn't count the points and you cannot
-  play with the computer yet.
+  Already is possible to play with another person and also is possible to play with PC
+  since the commit a21be74.
+  
+  Some bugs are possible but I'm working on it ;)
+  
+  
+  
   
   The commit e4753cd defines first standard version of the application and each commit after,
   defines the new features or versions.
