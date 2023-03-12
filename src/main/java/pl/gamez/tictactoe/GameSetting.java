@@ -12,9 +12,12 @@ public class GameSetting implements Settingz {
         gameArray = new int[3][3];
     }
 
+    @Override
     public void setValue(int i, int j, int value){
         this.gameArray[i][j] = value;
     }
+
+
 
     @Override
     public boolean checkWhoWin()

@@ -9,6 +9,7 @@ import pl.gamez.tictactoe.HelloApplication;
 
 import java.util.Random;
 
+import static pl.gamez.tictactoe.HelloApplication.buttons;
 import static pl.gamez.tictactoe.HelloApplication.gameSettings;
 
 public class MyButton extends Button
@@ -76,8 +77,8 @@ public class MyButton extends Button
 
 
 
-                if(HelloApplication.whichPlayer%2 != 0)
-                {
+//                if(HelloApplication.whichPlayer%2 != 0)
+//                {
 
                     if(parent instanceof Group)
                     {
@@ -86,13 +87,70 @@ public class MyButton extends Button
                            gameSettings.setValue(coordinateA, coordinateB, 2);
                            HelloApplication.crossImages[this.id].setVisible(true);
                            gameSettings.checkWhoWin();
+
+                        HelloApplication.whichPlayer++;
+
+
+                           boolean state = true;
+
+
+
+                           int[][] controllArray = gameSettings.getGameArray();
+
+                           while(state)
+                           {
+                               int randA = rand.nextInt(3);
+                               int randB = rand.nextInt(3);
+
+                               if (controllArray[randA][randB] == 0) {
+
+                                   gameSettings.setValue(randA, randB, 1);
+                                   HelloApplication.circleImages[this.id].setVisible(true);
+                                   gameSettings.checkWhoWin();
+
+                                   state = false;
+
+
+
+                               }
+                           }
+                        HelloApplication.whichPlayer++;
+
+
+
+
+
+
+
+
+
+                       //--------------Test block
+//                        boolean state = true;
+//
+//                        while (state){
+//                            int controllValue = rand.nextInt(8);
+//
+//                            if(buttons[controllValue].isVisible()){
+//                                buttons[controllValue].fire();
+//                                state = false;
+//                            }
+//
+//                        }
+
+                        //HelloApplication.whichPlayer++;
                     }
 
-                }
 
 
-                HelloApplication.whichPlayer++;
+//                }
+
+
+
         });
+
+
+
+
 
 
     }
