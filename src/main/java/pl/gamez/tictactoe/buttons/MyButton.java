@@ -104,8 +104,32 @@ public class MyButton extends Button
 
                                if (controllArray[randA][randB] == 0) {
 
+                                   int buttonValueForPC = 0;
+
                                    gameSettings.setValue(randA, randB, 1);
-                                   HelloApplication.circleImages[this.id].setVisible(true);
+                                   if(randA == 0 && randB == 0)
+                                       buttonValueForPC = 0;
+                                   else if(randA == 0 && randB == 1)
+                                       buttonValueForPC = 1;
+                                   else if(randA == 0 && randB == 2)
+                                       buttonValueForPC = 2;
+                                   else if(randA == 1 && randB == 0)
+                                       buttonValueForPC = 3;
+                                   else if(randA == 1 && randB == 1)
+                                       buttonValueForPC = 4;
+                                   else if(randA == 1 && randB == 2)
+                                       buttonValueForPC = 5;
+                                   else if(randA == 2 && randB == 0)
+                                       buttonValueForPC = 6;
+                                   else if(randA == 2 && randB == 1)
+                                       buttonValueForPC = 7;
+                                   else if(randA == 2 && randB == 2)
+                                       buttonValueForPC = 8;
+
+                                   HelloApplication.circleImages[buttonValueForPC].setVisible(true);
+
+
+
                                    gameSettings.checkWhoWin();
 
                                    state = false;
