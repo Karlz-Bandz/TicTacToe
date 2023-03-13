@@ -3,6 +3,7 @@ package pl.gamez.tictactoe;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,8 +36,8 @@ public class HelloApplication extends Application
     public static int player1Points = 0;
     public static int player2Points = 0;
     public static GameSetting gameSettings = new GameSetting();
-    public static Text player1 = new Text("Player 1: " + player1Points);
-    public static Text player2 = new Text("Player 2: " + player2Points);
+    public static Text player1 = new Text("Player X: " + player1Points);
+    public static Text player2 = new Text("Player O: " + player2Points);
     public static MyButton[] buttons = new MyButton[9];
     public static GameImage[] circleImages = new GameImage[9];
     public static GameImage[] crossImages = new GameImage[9];
@@ -51,8 +52,8 @@ public class HelloApplication extends Application
     public void start(Stage primaryStage) throws Exception
     {
         Text pointText = new Text("Points");
-        pointText.setX(454);
-        pointText.setY(60);
+        pointText.setX(464);
+        pointText.setY(77);
         pointText.setStyle("-fx-font-size: 20pt");
         pointText.setFont(Font.font("Impact"));
 
@@ -149,6 +150,15 @@ public class HelloApplication extends Application
         ExitButton exitButton = new ExitButton("EXIT");
         exitButton.exitGame();
 
+        Button resetButton = new Button("RESET");
+        resetButton.setPrefHeight(20);
+        resetButton.setPrefWidth(150);
+        resetButton.setLayoutX(422);
+        resetButton.setLayoutY(10);
+        resetButton.setOnAction((event) ->{
+            gameSettings.restartState();
+        });
+
         SetButton standard = new SetButton("1 on 1", 422, 200);
         standard.setWithPerson();
         SetButton pc = new SetButton("1 on PC", 422, 250);
@@ -178,6 +188,7 @@ public class HelloApplication extends Application
                 button, button2, button3,
                 button4, button5, button6,
                 button7, button8, button9,
+                resetButton,
                 standard,
                 pc,
                 exitButton,

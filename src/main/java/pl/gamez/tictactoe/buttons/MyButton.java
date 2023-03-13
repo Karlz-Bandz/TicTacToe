@@ -1,15 +1,15 @@
 package pl.gamez.tictactoe.buttons;
 
+
 import javafx.scene.Cursor;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
+
 import pl.gamez.tictactoe.HelloApplication;
 
 
 import java.util.Random;
 
-import static pl.gamez.tictactoe.HelloApplication.buttons;
+
 import static pl.gamez.tictactoe.HelloApplication.gameSettings;
 
 public class MyButton extends Button
@@ -20,7 +20,7 @@ public class MyButton extends Button
     private final int coordinateA;
     private final int coordinateB;
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
     public MyButton(String name, int x, int y, int id, int coordinateA, int coordinateB)
     {
@@ -41,30 +41,27 @@ public class MyButton extends Button
     {
         this.setOnAction(event -> {
 
-            Parent parent = this.getParent();
 
-            if(parent instanceof Group){
 
                 this.setVisible(false);
 
-                if(HelloApplication.whichPlayer%2 == 0) {
-
-                    gameSettings.setValue(coordinateA, coordinateB, 1);
+                if(HelloApplication.whichPlayer%2 == 0)
+                {
                     HelloApplication.circleImages[this.id].setVisible(true);
-                    gameSettings.checkWhoWin();
+                    gameSettings.setValue(coordinateA, coordinateB, 1);
+
+                    if(gameSettings.checkWhoWin())
+                        gameSettings.setWinO();
 
                 }else{
-
-                    gameSettings.setValue(coordinateA, coordinateB, 2);
                     HelloApplication.crossImages[this.id].setVisible(true);
-                    gameSettings.checkWhoWin();
+                    gameSettings.setValue(coordinateA, coordinateB, 2);
+
+                    if(gameSettings.checkWhoWin())
+                        gameSettings.setWinX();
 
                 }
-
                 HelloApplication.whichPlayer++;
-
-            }
-
         });
     }
 
@@ -73,109 +70,75 @@ public class MyButton extends Button
         this.setOnAction(event ->
         {
 
-                 Parent parent = this.getParent();
-
-
-
-//                if(HelloApplication.whichPlayer%2 != 0)
-//                {
-
-                    if(parent instanceof Group)
-                    {
+                           HelloApplication.crossImages[this.id].setVisible(true);
                            this.setVisible(false);
 
                            gameSettings.setValue(coordinateA, coordinateB, 2);
-                           HelloApplication.crossImages[this.id].setVisible(true);
-                           gameSettings.checkWhoWin();
 
-                        HelloApplication.whichPlayer++;
+                           if(gameSettings.checkWhoWin())
+                           gameSettings.setWinX();
 
+                           HelloApplication.whichPlayer++;
 
                            boolean state = true;
-
-
-
                            int[][] controllArray = gameSettings.getGameArray();
 
-                           while(state)
-                           {
-                               int randA = rand.nextInt(3);
-                               int randB = rand.nextInt(3);
+                           //This help to prevent the while loop from never end looping
+                           int secure = -1;
 
-                               if (controllArray[randA][randB] == 0) {
+                            while(state)
+                            {
+                                 int randA = rand.nextInt(3);
+                                 int randB = rand.nextInt(3);
 
-                                   int buttonValueForPC = 0;
-
-                                   gameSettings.setValue(randA, randB, 1);
-                                   if(randA == 0 && randB == 0)
-                                       buttonValueForPC = 0;
-                                   else if(randA == 0 && randB == 1)
-                                       buttonValueForPC = 1;
-                                   else if(randA == 0 && randB == 2)
-                                       buttonValueForPC = 2;
-                                   else if(randA == 1 && randB == 0)
-                                       buttonValueForPC = 3;
-                                   else if(randA == 1 && randB == 1)
-                                       buttonValueForPC = 4;
-                                   else if(randA == 1 && randB == 2)
-                                       buttonValueForPC = 5;
-                                   else if(randA == 2 && randB == 0)
-                                       buttonValueForPC = 6;
-                                   else if(randA == 2 && randB == 1)
-                                       buttonValueForPC = 7;
-                                   else if(randA == 2 && randB == 2)
-                                       buttonValueForPC = 8;
-
-                                   HelloApplication.circleImages[buttonValueForPC].setVisible(true);
+                                 secure++;
 
 
+                              if (controllArray[randA][randB] == 0)
+                              {
 
-                                   gameSettings.checkWhoWin();
+                                int buttonValueForPC = 0;
 
-                                   state = false;
+                                gameSettings.setValue(randA, randB, 1);
+                                if (randA == 0 && randB == 0)
+                                    buttonValueForPC = 0;
+                                else if (randA == 0 && randB == 1)
+                                    buttonValueForPC = 1;
+                                else if (randA == 0 && randB == 2)
+                                    buttonValueForPC = 2;
+                                else if (randA == 1 && randB == 0)
+                                    buttonValueForPC = 3;
+                                else if (randA == 1 && randB == 1)
+                                    buttonValueForPC = 4;
+                                else if (randA == 1 && randB == 2)
+                                    buttonValueForPC = 5;
+                                else if (randA == 2 && randB == 0)
+                                    buttonValueForPC = 6;
+                                else if (randA == 2 && randB == 1)
+                                    buttonValueForPC = 7;
+                                else if (randA == 2 && randB == 2)
+                                    buttonValueForPC = 8;
 
-
-
-                               }
-                           }
-                        HelloApplication.whichPlayer++;
+                                HelloApplication.circleImages[buttonValueForPC].setVisible(true);
 
 
 
 
 
 
+                                  if(gameSettings.checkWhoWin())
+                                      gameSettings.setWinO();
 
+                                  HelloApplication.whichPlayer++;
 
+                                state = false;
 
-                       //--------------Test block
-//                        boolean state = true;
-//
-//                        while (state){
-//                            int controllValue = rand.nextInt(8);
-//
-//                            if(buttons[controllValue].isVisible()){
-//                                buttons[controllValue].fire();
-//                                state = false;
-//                            }
-//
-//                        }
+                            }
 
-                        //HelloApplication.whichPlayer++;
-                    }
-
-
-
-//                }
-
-
+                                    if (secure > 9)
+                                        state = false;
+                        }
 
         });
-
-
-
-
-
-
     }
 }
