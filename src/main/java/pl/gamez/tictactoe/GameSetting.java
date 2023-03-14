@@ -61,24 +61,26 @@ public class GameSetting implements Settingz
     public void restartState()
     {
 
-        int buttonCounter = 0;
+        for(int i = 0; i < 9; i++)
+        {
+            if(!HelloApplication.buttons[i].isVisible())
+                HelloApplication.buttons[i].setVisible(true);
+
+            if(HelloApplication.circleImages[i].isVisible())
+                HelloApplication.circleImages[i].setVisible(false);
+
+            if(HelloApplication.crossImages[i].isVisible())
+                HelloApplication.crossImages[i].setVisible(false);
+        }
 
         for(int i = 0; i < 3; i++)
         {
             for(int j = 0; j < 3; j++)
             {
-
                 if(this.gameArray[i][j] != 0)
                 {
-                    HelloApplication.buttons[buttonCounter].setVisible(true);
                     gameArray[i][j] = 0;
-                    if(HelloApplication.crossImages[buttonCounter].isVisible() == true){
-                           HelloApplication.crossImages[buttonCounter].setVisible(false);
-                    }else if(HelloApplication.circleImages[buttonCounter].isVisible() == true){
-                        HelloApplication.circleImages[buttonCounter].setVisible(false);
-                    }
                 }
-                buttonCounter++;
             }
         }
 
@@ -96,14 +98,27 @@ public class GameSetting implements Settingz
 
             System.out.println("Player o won");
             HelloApplication.player2.setText("Player O: " + ++HelloApplication.player2Points);
+            buttonsHide();
 
     }
+
+    @Override
+    public void buttonsHide()
+    {
+        for(int i = 0; i < 9; i++)
+        {
+            if(HelloApplication.buttons[i].isVisible())
+                HelloApplication.buttons[i].setVisible(false);
+        }
+    }
+
     @Override
     public void setWinX()
     {
 
             System.out.println("Player x won");
             HelloApplication.player1.setText("Player X: " + ++HelloApplication.player1Points);
+            buttonsHide();
 
     }
 

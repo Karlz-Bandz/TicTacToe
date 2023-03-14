@@ -13,7 +13,7 @@ public interface Settingz {
 
     void setWinO();
 
-    //void notifyGameStatus();
+    void buttonsHide();
 
     boolean checkWhoWin() throws InterruptedException;
 
