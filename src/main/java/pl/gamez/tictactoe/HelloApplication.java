@@ -133,8 +133,6 @@ public class HelloApplication extends Application
         circleImages[7] = circleImage8;
         circleImages[8] = circleImage9;
 
-
-
         MyButton button = new MyButton("",12,12,0,0,0);
         MyButton button2 = new MyButton("",146,12,1,0,1);
         MyButton button3 = new MyButton("",280,12,2,0,2);
@@ -164,8 +162,6 @@ public class HelloApplication extends Application
         SetButton pc = new SetButton("1 on PC", 422, 250);
         pc.setWithPC();
 
-
-
         buttons[0] = button;
         buttons[1] = button2;
         buttons[2] = button3;
@@ -181,9 +177,6 @@ public class HelloApplication extends Application
                 circleImage9, crossImage1,crossImage2,crossImage3,crossImage4,
                 crossImage5,crossImage6,crossImage7,crossImage8,crossImage9);
 
-
-
-
         Group root = new Group(imageView1,
                 button, button2, button3,
                 button4, button5, button6,
@@ -196,8 +189,6 @@ public class HelloApplication extends Application
                 player1, player2,
                 groupImg
         );
-
-
 
         Scene scene = new Scene(root, Color.GRAY);
 

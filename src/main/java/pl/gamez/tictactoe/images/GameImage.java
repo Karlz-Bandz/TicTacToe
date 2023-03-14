@@ -5,8 +5,6 @@ import javafx.scene.image.ImageView;
 
 public class GameImage extends ImageView
 {
-
-
     public GameImage(Image img, int x, int y)
     {
         super(img);
@@ -14,8 +12,5 @@ public class GameImage extends ImageView
         this.setLayoutY(y);
         this.setFitHeight(133);
         this.setFitWidth(133);
-
     }
-
-
 }
