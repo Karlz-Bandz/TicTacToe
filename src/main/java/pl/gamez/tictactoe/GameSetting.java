@@ -4,10 +4,7 @@ import pl.gamez.tictactoe.interfaces.Settingz;
 
 public class GameSetting implements Settingz
 {
-
     private int[][] gameArray;
-
-
 
     public GameSetting()
     {
@@ -25,9 +22,6 @@ public class GameSetting implements Settingz
     {
         this.gameArray[i][j] = value;
     }
-
-
-
     @Override
     public boolean checkWhoWin()
     {
@@ -50,17 +44,15 @@ public class GameSetting implements Settingz
             return true;
         //Game not finish
         if(HelloApplication.whichPlayer >= 10)
-        {
-
             return true;
-        }
+
+
+
         return false;
     }
-
     @Override
     public void restartState()
     {
-
         for(int i = 0; i < 9; i++)
         {
             if(!HelloApplication.buttons[i].isVisible())
@@ -88,22 +80,28 @@ public class GameSetting implements Settingz
             HelloApplication.whichPlayer = 1;
         else
             HelloApplication.whichPlayer = 0;
-
     }
-
-
     @Override
     public void setWinO()
     {
-
             System.out.println("Player o won");
             HelloApplication.player2.setText("Player O: " + ++HelloApplication.player2Points);
             buttonsHide();
-
+    }
+    @Override
+    public void setWinX()
+    {
+            System.out.println("Player x won");
+            HelloApplication.player1.setText("Player X: " + ++HelloApplication.player1Points);
+            buttonsHide();
     }
 
-    @Override
-    public void buttonsHide()
+
+
+
+    //PRIVATE Methods------------------------------------------------------------------
+
+    private void buttonsHide()
     {
         for(int i = 0; i < 9; i++)
         {
@@ -111,18 +109,4 @@ public class GameSetting implements Settingz
                 HelloApplication.buttons[i].setVisible(false);
         }
     }
-
-    @Override
-    public void setWinX()
-    {
-
-            System.out.println("Player x won");
-            HelloApplication.player1.setText("Player X: " + ++HelloApplication.player1Points);
-            buttonsHide();
-
-    }
-
-
-
-
 }

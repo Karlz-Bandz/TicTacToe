@@ -1,6 +1,5 @@
 package pl.gamez.tictactoe.buttons;
 
-import javafx.application.Platform;
 import javafx.scene.control.Button;
 
 import static pl.gamez.tictactoe.HelloApplication.buttons;

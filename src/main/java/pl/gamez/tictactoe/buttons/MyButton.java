@@ -1,14 +1,9 @@
 package pl.gamez.tictactoe.buttons;
 
-
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-
 import pl.gamez.tictactoe.HelloApplication;
-
-
 import java.util.Random;
-
 
 import static pl.gamez.tictactoe.HelloApplication.gameSettings;
 
@@ -41,9 +36,7 @@ public class MyButton extends Button
     {
         this.setOnAction(event -> {
 
-
-
-                this.setVisible(false);
+            this.setVisible(false);
 
                 if(HelloApplication.whichPlayer%2 == 0)
                 {
@@ -69,7 +62,6 @@ public class MyButton extends Button
     {
         this.setOnAction(event ->
         {
-
                            HelloApplication.crossImages[this.id].setVisible(true);
                            this.setVisible(false);
 
@@ -86,7 +78,7 @@ public class MyButton extends Button
                            //This help to prevent the while loop from never end looping
                            int secure = -1;
 
-                            while(state)
+                           while(state)
                             {
                                  int randA = rand.nextInt(3);
                                  int randB = rand.nextInt(3);
@@ -121,12 +113,7 @@ public class MyButton extends Button
 
                                 HelloApplication.circleImages[buttonValueForPC].setVisible(true);
 
-
-
-
-
-
-                                  if(gameSettings.checkWhoWin())
+                                      if(gameSettings.checkWhoWin())
                                       gameSettings.setWinO();
 
                                   HelloApplication.whichPlayer++;
@@ -134,8 +121,7 @@ public class MyButton extends Button
                                 state = false;
 
                             }
-
-                                    if (secure > 9)
+                                        if (secure > 9)
                                         state = false;
                         }
 
