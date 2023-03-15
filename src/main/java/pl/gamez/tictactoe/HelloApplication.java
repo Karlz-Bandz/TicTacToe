@@ -5,15 +5,22 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+//import javafx.scene.media.MediaPlayer;
+
 import pl.gamez.tictactoe.buttons.ExitButton;
 import pl.gamez.tictactoe.buttons.MyButton;
 import pl.gamez.tictactoe.buttons.SetButton;
 import pl.gamez.tictactoe.images.GameImage;
 import pl.gamez.tictactoe.images.ImageController;
+
+import java.io.File;
 
 /*
 * TicTacToe 1.3 Standard
@@ -44,6 +51,8 @@ public class HelloApplication extends Application
 
     //-----------------------------------------------------------------------------------------
 
+
+
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -51,6 +60,12 @@ public class HelloApplication extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+        String musicPath = "src/main/resources/music/music.mp3";
+        Media media = new Media(new File(musicPath).toURI().toString());
+        MediaPlayer musicPlayer = new MediaPlayer(media);
+        musicPlayer.play();
+
+
         Text pointText = new Text("Points");
         pointText.setX(464);
         pointText.setY(77);
